@@ -17,7 +17,7 @@ class Chats : AppCompatActivity() {
 
     private val contacts = listOf(
         "John Joshua - Thanks for your service",
-        "Chinonso James - Alright, I will be waiting",
+        "Chinonso James - Alright, I will be waiting", //Список контактов
         "Raph Ron - Thanks for your service",
         "Joy Ezekiel - Thanks for your service"
     )
@@ -40,14 +40,14 @@ class Chats : AppCompatActivity() {
 
         lvContacts.setOnItemClickListener { _, _, position, _ ->
             val selectedContact = contacts[position]
-            val intent = Intent(this, Contact::class.java)
+            val intent = Intent(this, Contact::class.java) //Отправка выбраного контакта на следующий экран
             intent.putExtra("CONTACT_INFO", selectedContact)
             startActivity(intent)
         }
 
     }
 
-    fun BackToLogin(view: View) {
+    fun BackToLogin(view: View) { //Нажатие на стрелку переносит на предыдущий экран
 
         val intent = Intent(this, Login::class.java)
         startActivity(intent)

@@ -29,17 +29,17 @@ class Login : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
 
-        sharedPref = getSharedPreferences("LoginPrefs", MODE_PRIVATE)
+        sharedPref = getSharedPreferences("LoginPrefs", MODE_PRIVATE) //Получение SharedPreferences
 
         etEmail = findViewById(R.id.email)
-        etPassword = findViewById(R.id.password)
+        etPassword = findViewById(R.id.password) //Получение View
 
-        val savedEmail = sharedPref.getString("email", "")
+        val savedEmail = sharedPref.getString("email", "") //Получение сохранённых строк
         val savedPassword = sharedPref.getString("password", "")
 
-        if (!savedEmail.isNullOrEmpty() && !savedPassword.isNullOrEmpty()) {
+        if (!savedEmail.isNullOrEmpty() && !savedPassword.isNullOrEmpty()) { //Проверка на сохранённые строки
             etEmail.setText(savedEmail)
-            etPassword.setText(savedPassword)
+            etPassword.setText(savedPassword) //Сохранённые строки устанавливаются в editText
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -54,7 +54,7 @@ class Login : AppCompatActivity() {
         val email = etEmail.text.toString().trim()
         val password = etPassword.text.toString().trim()
 
-        if (email.isEmpty() || password.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty()) { //Проверка на пустые поля
             AlertDialog.Builder(this)
                 .setMessage("Поля должны быть заполнены")
                 .create()
@@ -62,14 +62,14 @@ class Login : AppCompatActivity() {
             return
         }
 
-        if (email == validEmail && password == validPassword) {
+        if (email == validEmail && password == validPassword) { //Проверка на правильность ввода
 
             with(sharedPref.edit()) {
                 putString("email", email)
                 putString("password", password)
                 apply()
             }
-            val intent = Intent(this, Chats::class.java)
+            val intent = Intent(this, Chats::class.java) //Переход на следующий экран
             startActivity(intent)
             finish()
         }

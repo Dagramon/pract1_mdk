@@ -17,7 +17,7 @@ class Contact : AppCompatActivity() {
 
         val textViewContact = findViewById<TextView>(R.id.ContactInfo)
 
-        val contactInfo = intent.getStringExtra("CONTACT_INFO") ?: ""
+        val contactInfo = intent.getStringExtra("CONTACT_INFO") ?: "" //Получение информации о контакте
 
         textViewContact.text = contactInfo
 
@@ -28,7 +28,7 @@ class Contact : AppCompatActivity() {
         }
     }
 
-    fun Back(view: View) {
+    fun Back(view: View) { //Нажатие на стрелку - переходит на предыдущий экран
 
         val intent = Intent(this, Chats::class.java)
         startActivity(intent)
